@@ -42,11 +42,11 @@ export function Navigation() {
           isScrolled ? "glass-strong py-3" : "py-5"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
           {/* Logo */}
           <a
             href="#home"
-            className="text-xl font-bold text-gradient hover:opacity-80 transition-opacity"
+            className="text-base sm:text-xl font-bold text-gradient hover:opacity-80 transition-opacity truncate max-w-[160px] sm:max-w-none"
           >
             {personalInfo.name}
           </a>

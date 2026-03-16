@@ -30,19 +30,19 @@ export function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants} className="text-center mb-10 sm:mb-16">
             <p className="text-primary text-sm uppercase tracking-widest mb-3">
               Get to know me
             </p>
@@ -52,16 +52,16 @@ export function About() {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Column - Photo/Visual */}
             <motion.div variants={itemVariants} className="relative">
-              <div className="relative aspect-square max-w-md mx-auto">
+              <div className="relative aspect-square max-w-xs sm:max-w-md mx-auto">
                 {/* Animated border */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary animate-spin-slow opacity-30" />
                 <div className="absolute inset-1 rounded-2xl bg-background" />
                 
                 {/* Profile image with glass overlay */}
-                <div className="absolute inset-4 rounded-xl overflow-hidden">
+                <div className="absolute inset-3 sm:inset-4 rounded-xl overflow-hidden">
                   <Image
                     src="/images/profile.jpg"
                     alt="Rishav Roy"
@@ -73,20 +73,20 @@ export function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
                 </div>
 
-                {/* Floating elements */}
+                {/* Floating elements — hidden on very small screens to avoid clipping */}
                 <motion.div
-                  className="absolute -top-4 -right-4 p-3 glass rounded-lg"
+                  className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 p-2 sm:p-3 glass rounded-lg"
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <GraduationCap className="w-6 h-6 text-primary" />
+                  <GraduationCap className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
                 </motion.div>
                 <motion.div
-                  className="absolute -bottom-4 -left-4 p-3 glass rounded-lg"
+                  className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 p-2 sm:p-3 glass rounded-lg"
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity }}
                 >
-                  <MapPin className="w-6 h-6 text-accent" />
+                  <MapPin className="w-4 h-4 sm:w-6 sm:h-6 text-accent" />
                 </motion.div>
               </div>
             </motion.div>
@@ -116,7 +116,7 @@ export function About() {
                     </div>
                     <span className="text-sm text-muted-foreground">Email</span>
                   </div>
-                  <p className="font-medium text-sm">{personalInfo.email}</p>
+                  <p className="font-medium text-xs sm:text-sm break-all">{personalInfo.email}</p>
                 </div>
 
                 <div className="glass p-4 rounded-xl sm:col-span-2">
