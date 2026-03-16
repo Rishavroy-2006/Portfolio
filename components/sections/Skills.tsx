@@ -42,13 +42,13 @@ export function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-1/4 right-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -66,7 +66,7 @@ export function Skills() {
           </motion.div>
 
           {/* Skills Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mb-16">
             {skills.map((skill, index) => {
               const Icon = categoryIcons[skill.category] || Code;
               const gradient = categoryColors[skill.category] || "from-primary to-accent";
@@ -76,7 +76,7 @@ export function Skills() {
                   key={skill.name}
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="group glass p-5 rounded-xl cursor-default relative overflow-hidden"
+                  className="group glass p-4 sm:p-5 rounded-xl cursor-default relative overflow-hidden"
                 >
                   {/* Hover glow effect */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />

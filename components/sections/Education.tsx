@@ -30,12 +30,12 @@ export function Education() {
     <section
       id="education"
       ref={ref}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -52,7 +52,7 @@ export function Education() {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Education Timeline */}
             <motion.div variants={itemVariants}>
               <div className="flex items-center gap-3 mb-8">
@@ -79,7 +79,7 @@ export function Education() {
                     </div>
 
                     {/* Content card */}
-                    <div className="glass-strong p-6 rounded-xl">
+                    <div className="glass-strong p-4 sm:p-6 rounded-xl">
                       {/* Status badge */}
                       <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full mb-3">
                         {edu.status}
@@ -112,7 +112,7 @@ export function Education() {
                       {edu.coursework && edu.coursework.length > 0 && (
                         <div className="mt-4 pt-4 border-t border-border">
                           <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-3">Relevant Coursework</p>
-                          <div className="grid grid-cols-2 gap-2">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             {edu.coursework.map((course) => (
                               <div key={course} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
                                 {course}

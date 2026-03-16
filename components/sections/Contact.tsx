@@ -106,13 +106,13 @@ export function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -132,11 +132,11 @@ export function Contact() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Info & Social Links */}
             <motion.div variants={itemVariants} className="space-y-8">
               {/* Info Card */}
-              <div className="glass-strong p-8 rounded-2xl">
+              <div className="glass-strong p-5 sm:p-8 rounded-2xl">
                 <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
                 
                 <div className="space-y-4">
@@ -149,7 +149,7 @@ export function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">{personalInfo.email}</p>
+                      <p className="font-medium text-sm break-all">{personalInfo.email}</p>
                     </div>
                     <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
@@ -169,7 +169,7 @@ export function Contact() {
               {/* Social Links */}
               <div>
                 <h3 className="text-lg font-semibold mb-4">Find me on</h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {socialItems.map((social) => (
                     <motion.a
                       key={social.name}
@@ -178,7 +178,7 @@ export function Contact() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="group relative flex items-center gap-3 p-4 glass rounded-xl border border-white/10 transition-all duration-300 overflow-hidden"
+                      className="group relative flex items-center gap-2 sm:gap-3 p-3 sm:p-4 glass rounded-xl border border-white/10 transition-all duration-300 overflow-hidden"
                     >
                       {/* Glow effect */}
                       <div 
@@ -212,7 +212,7 @@ export function Contact() {
                         />
                       </div>
                       
-                      <span className="relative z-10 font-medium group-hover:text-white transition-colors duration-300">
+                      <span className="relative z-10 font-medium text-sm group-hover:text-white transition-colors duration-300 truncate">
                         {social.name}
                       </span>
                       
@@ -226,7 +226,7 @@ export function Contact() {
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
-              <div className="glass-strong p-8 rounded-2xl relative overflow-hidden">
+              <div className="glass-strong p-5 sm:p-8 rounded-2xl relative overflow-hidden">
                 {/* Success overlay */}
                 {submitted && (
                   <motion.div

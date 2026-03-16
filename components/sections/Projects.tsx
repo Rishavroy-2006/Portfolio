@@ -28,12 +28,12 @@ export function Projects() {
     <section
       id="projects"
       ref={ref}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -51,7 +51,7 @@ export function Projects() {
           </motion.div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -63,7 +63,7 @@ export function Projects() {
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-2xl opacity-30 group-hover:opacity-60 blur transition-all duration-500" />
                 
                 {/* Card content */}
-                <div className="relative glass-strong rounded-2xl p-6 h-full flex flex-col">
+                  <div className="relative glass-strong rounded-2xl p-4 sm:p-6 h-full flex flex-col">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl">

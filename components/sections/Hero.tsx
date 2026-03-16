@@ -58,14 +58,14 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-background/30 via-transparent to-background/30 z-10 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-20 text-center px-4 sm:px-6 max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
         >
           <motion.p
-            className="text-muted-foreground text-xs md:text-sm uppercase tracking-[0.25em] mb-5"
+            className="text-muted-foreground text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] mb-4 sm:mb-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -73,12 +73,12 @@ export function Hero() {
             Welcome to my portfolio
           </motion.p>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-5 leading-tight tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-5 leading-tight tracking-tight">
             <span className="text-foreground">{personalInfo.name}</span>
           </h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-muted-foreground mb-10 min-h-[2rem]"
+            className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 sm:mb-10 min-h-[2rem]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
@@ -88,7 +88,7 @@ export function Hero() {
 
           {/* Social Links */}
           <motion.div
-            className="flex items-center justify-center gap-4 mb-10"
+            className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -97,48 +97,48 @@ export function Hero() {
               href={socialLinks.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
+              className="p-2.5 sm:p-3 glass rounded-full hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
               aria-label="GitHub Profile"
             >
-              <Github className="w-5 h-5 group-hover:text-primary transition-colors" />
+              <Github className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-primary transition-colors" />
             </a>
             <a
               href={socialLinks.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
+              className="p-2.5 sm:p-3 glass rounded-full hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
               aria-label="LinkedIn Profile"
             >
-              <Linkedin className="w-5 h-5 group-hover:text-primary transition-colors" />
+              <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-primary transition-colors" />
             </a>
             <a
               href={socialLinks.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
+              className="p-2.5 sm:p-3 glass rounded-full hover:bg-primary/20 hover:scale-110 transition-all duration-300 group"
               aria-label="Instagram Profile"
             >
-              <Instagram className="w-5 h-5 group-hover:text-primary transition-colors" />
+              <Instagram className="w-4 h-4 sm:w-5 sm:h-5 group-hover:text-primary transition-colors" />
             </a>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
             <a
               href="#projects"
-              className="flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 sm:px-10 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base sm:text-lg hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300"
             >
               View Projects
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5" />
             </a>
             <a
               href="#contact"
-              className="px-8 py-3 glass rounded-lg font-medium hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center px-8 sm:px-10 py-4 glass rounded-lg font-semibold text-base sm:text-lg hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
             >
               Contact Me
             </a>
