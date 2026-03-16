@@ -124,21 +124,21 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col xs:flex-row items-center justify-center gap-3 sm:gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
             <a
               href="#projects"
-              className="w-full xs:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 sm:px-10 py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-base sm:text-lg hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-300"
             >
               View Projects
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5" />
             </a>
             <a
               href="#contact"
-              className="w-full xs:w-auto flex items-center justify-center px-6 sm:px-8 py-3 glass rounded-lg font-medium hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center px-8 sm:px-10 py-4 glass rounded-lg font-semibold text-base sm:text-lg hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300"
             >
               Contact Me
             </a>
