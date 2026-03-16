@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
     // Using Resend service (recommended for Vercel)
     const resendApiKey = process.env.RESEND_API_KEY;
-    
+
     if (resendApiKey) {
       try {
         const response = await fetch("https://api.resend.com/emails", {
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
           },
           body: JSON.stringify({
             from: "onboarding@resend.dev",
-            to: "rishavroy2006@gmail.com",
+            to: "rishavroy.2006@gmail.com",
             replyTo: email,
             subject: `New Portfolio Message from ${name}`,
             html: `
@@ -68,8 +68,8 @@ export async function POST(request: NextRequest) {
         console.error("Resend error:", error);
         // Fallback to email-only response if Resend fails
         return NextResponse.json(
-          { 
-            success: true, 
+          {
+            success: true,
             message: "Message received. Please email rishavroy2006@gmail.com directly for immediate response.",
             fallback: true
           },
@@ -83,10 +83,10 @@ export async function POST(request: NextRequest) {
         email,
         message,
       });
-      
+
       return NextResponse.json(
-        { 
-          success: true, 
+        {
+          success: true,
           message: "Thank you for your message! Contact email: rishavroy2006@gmail.com",
           fallback: true
         },
