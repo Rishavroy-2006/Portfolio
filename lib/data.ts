@@ -29,7 +29,7 @@ export const skills = [
 export const projects = [
   {
     title: "Swapnacharon",
-    description: "Dream-like photography and storytelling website featuring cinematic layouts and visual galleries.",
+    description: "Photography Portfolio website featuring cinematic layouts and visual galleries along with social media highlights.",
     tech: ["HTML", "CSS", "JavaScript"],
     link: "https://rishavroy-2006.github.io/Swapnacharon/",
     github: "https://github.com/RishavRoy-2006/Swapnacharon",
@@ -39,28 +39,28 @@ export const projects = [
     description: "A responsive timetable interface designed to help students organize class schedules quickly.",
     tech: ["React", "Next.js", "Tailwind CSS"],
     link: "https://aiml2a-time-table.vercel.app/",
-    github: "https://github.com/RishavRoy-1",
+    github: "https://github.com/Rishavroy-2006",
   },
   {
     title: "Raj Mahal Review Portal",
-    description: "A restaurant review platform concept where users can explore ratings and share dining experiences.",
+    description: "A Banquet review platform where users can explore ratings and share their experiences.",
     tech: ["React", "Next.js", "Vercel"],
     link: "https://v0-raj-mahaal-review-portal-755qq9zl8.vercel.app/",
-    github: "https://github.com/RishavRoy-1",
+    github: "https://github.com/Rishavroy-2006",
   },
   {
     title: "UIDIA Aadhaar Data Console",
     description: "A conceptual government dashboard interface for visualizing identity data and analytics.",
     tech: ["React", "Next.js", "Data Visualization"],
     link: "https://uidia-aadhar-data-console.vercel.app/",
-    github: "https://github.com/RishavRoy-1",
+    github: "https://github.com/Rishavroy-2006",
   },
   {
     title: "PhoneCloud",
     description: "An experimental web interface simulating a cloud environment for accessing phone data and files.",
     tech: ["Web Technologies", "Cloud Simulation"],
     link: "https://phonecloud.serveousercontent.com/",
-    github: "https://github.com/RishavRoy-1",
+    github: "https://github.com/Rishavroy-2006",
   },
 ];
 
