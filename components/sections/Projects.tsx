@@ -33,7 +33,7 @@ export function Projects() {
       {/* Background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -61,9 +61,9 @@ export function Projects() {
               >
                 {/* Holographic effect border */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-2xl opacity-30 group-hover:opacity-60 blur transition-all duration-500" />
-                
+
                 {/* Card content */}
-                  <div className="relative glass-strong rounded-2xl p-4 sm:p-6 h-full flex flex-col">
+                <div className="relative glass-strong rounded-2xl p-4 sm:p-6 h-full flex flex-col">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl">
@@ -124,7 +124,7 @@ export function Projects() {
             className="text-center mt-12"
           >
             <a
-              href="https://github.com/RishavRoy-1"
+              href="https://github.com/Rishavroy-2006"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 glass rounded-lg hover:bg-white/10 transition-all duration-300 group"
