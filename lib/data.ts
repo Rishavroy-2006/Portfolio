@@ -57,8 +57,8 @@ export const projects = [
   },
   {
     title: "PhoneCloud",
-    description: "An experimental web interface simulating a cloud environment for accessing phone data and files.",
-    tech: ["Web Technologies", "Cloud Simulation"],
+    description: "Repurposed an old Android phone as a personal cloud server, accessible from any device on the network. Built file management, full-text search, AI-powered file chat, and role-based authentication with isolated user storage.",
+    tech: ["Python", "Termux", "Flask", "Flask-SocketIO", "WebSockets"],
     link: "https://phonecloud.serveousercontent.com/",
     github: "https://github.com/Rishavroy-2006",
   },
