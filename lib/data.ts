@@ -66,8 +66,8 @@ export const projects = [
 
 export const education = [
   {
-    degree: "Secondary Education",
-    specialization: "High School",
+    degree: "Secondary & Higher Secondary Education",
+    specialization: "ICSE & ISC",
     institution: "Adamas International School",
     period: "Apr 2009 - Apr 2024",
     status: "Completed",
