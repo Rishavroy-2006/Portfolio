@@ -26,6 +26,8 @@ export default function HeroBackground() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [springX, springY]);
 
+  if (!mounted) return null;
+
   return (
     <div
       ref={containerRef}

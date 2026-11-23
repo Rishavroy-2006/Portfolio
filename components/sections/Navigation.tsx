@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { navItems, personalInfo, socialLinks } from "@/lib/data";
 
 export function Navigation() {
@@ -14,12 +14,12 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = navItems.map((item) => item.href.slice(1));
-      for (const section of sections.reverse()) {
+      const sectionIds = ["home", ...navItems.map((item) => item.href.slice(1))];
+      for (const section of [...sectionIds].reverse()) {
         const el = document.getElementById(section);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
+          if (rect.top <= 240) {
             setActiveSection(section);
             break;
           }
@@ -28,111 +28,212 @@ export function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileOpen]);
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-white/[0.08] py-3.5"
-            : "bg-transparent py-5"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 pointer-events-none ${
+          isScrolled ? "pt-3 sm:pt-4" : "pt-4 sm:pt-6"
         }`}
       >
-        <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
-          {/* Logo / Monogram */}
+        <nav
+          aria-label="Main Navigation"
+          className="max-w-5xl mx-auto flex items-center justify-between gap-3 pointer-events-auto"
+        >
+          {/* Logo / Monogram Pill */}
           <a
             href="#home"
-            className="flex items-center gap-2.5 text-sm sm:text-base font-semibold tracking-tight text-white hover:text-primary transition-colors"
+            className="flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-zinc-950/85 backdrop-blur-md border border-white/[0.08] shadow-lg hover:border-sky-500/30 transition-all duration-200 group"
           >
-            <span className="w-7 h-7 rounded-md bg-white/[0.08] border border-white/10 flex items-center justify-center font-mono text-xs font-bold text-primary">
+            <span className="w-6 h-6 rounded-md bg-gradient-to-br from-sky-500/20 to-indigo-500/20 border border-sky-500/30 flex items-center justify-center font-mono text-[11px] font-bold text-sky-300 group-hover:scale-105 transition-transform">
               {personalInfo.initials}
             </span>
-            <span>{personalInfo.name}</span>
+            <div className="flex flex-col text-left">
+              <span className="text-xs sm:text-sm font-semibold tracking-tight text-white leading-tight">
+                {personalInfo.name}
+              </span>
+              <span className="text-[10px] font-mono text-zinc-400 hidden sm:inline leading-none">
+                AI/ML & Systems
+              </span>
+            </div>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <ul className="hidden md:flex items-center gap-1 bg-white/[0.03] p-1 rounded-full border border-white/[0.06]">
+          {/* Desktop Navigation Links Pill */}
+          <div className="hidden lg:flex items-center gap-1 bg-zinc-950/85 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/[0.08] shadow-xl">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.slice(1);
+              const targetId = item.href.slice(1);
+              const isActive = activeSection === targetId;
+
               return (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                      isActive
-                        ? "text-white bg-white/[0.08]"
-                        : "text-muted-foreground hover:text-white"
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                </li>
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+                    isActive
+                      ? "text-white font-semibold"
+                      : "text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavPill"
+                      className="absolute inset-0 rounded-full bg-white/[0.09] border border-white/[0.12] -z-10"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  {item.name}
+                </a>
               );
             })}
-          </ul>
-
-          {/* Right CTA / GitHub */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href={socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md surface-card text-xs font-medium text-foreground hover:border-white/20 transition-all"
-            >
-              <span>GitHub</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground" />
-            </a>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Status Beacon & Social Actions */}
+          <div className="hidden md:flex items-center gap-2">
+            {/* Status Beacon */}
+            <div className="hidden xl:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-950/85 backdrop-blur-md border border-white/[0.08] text-[11px] font-mono text-zinc-300 shadow-lg">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+              </span>
+              <span>Available for Roles</span>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-1 bg-zinc-950/85 backdrop-blur-md p-1 rounded-full border border-white/[0.08] shadow-lg">
+              <a
+                href={socialLinks.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="p-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+                title="GitHub"
+              >
+                <Github className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="p-1.5 rounded-full text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-white hover:bg-white/[0.06] transition-colors"
+            className="lg:hidden p-2.5 rounded-full bg-zinc-950/85 backdrop-blur-md border border-white/[0.08] text-zinc-300 hover:text-white hover:bg-white/[0.08] transition-all shadow-lg pointer-events-auto"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
           >
-            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </nav>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer / Overlay */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[60px] z-40 bg-background/95 backdrop-blur-xl border-b border-white/[0.08] p-6 md:hidden"
-          >
-            <ul className="flex flex-col gap-3">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block py-2 text-base font-medium text-foreground hover:text-primary transition-colors"
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-              <li className="pt-4 border-t border-white/[0.08]">
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-md lg:hidden"
+            />
+
+            {/* Mobile Content Card */}
+            <motion.div
+              initial={{ opacity: 0, y: -16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="fixed top-20 inset-x-4 z-50 max-w-lg mx-auto bg-zinc-950/95 backdrop-blur-2xl rounded-2xl border border-white/10 p-5 shadow-2xl lg:hidden overflow-hidden"
+            >
+              {/* Status Header */}
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.08]">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                  </span>
+                  <span className="text-xs font-mono text-zinc-300 font-medium">
+                    Available for AI/ML & Systems roles
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-zinc-500">Kolkata, IN</span>
+              </div>
+
+              {/* Navigation Links */}
+              <ul className="flex flex-col gap-1 mb-4">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/[0.06] transition-colors"
+                    >
+                      <span>{item.name}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Quick Contact & Socials Bar */}
+              <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between">
                 <a
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center gap-2 text-sm text-primary font-medium"
+                  href={`mailto:${personalInfo.email}`}
+                  className="text-xs font-mono text-sky-400 hover:text-sky-300 font-medium"
                 >
-                  <span>Visit GitHub Profile</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  {personalInfo.email}
                 </a>
-              </li>
-            </ul>
-          </motion.div>
+
+                <div className="flex items-center gap-2">
+                  <a
+                    href={socialLinks.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="p-2 rounded-lg bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                  </a>
+                  <a
+                    href={socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="p-2 rounded-lg bg-white/[0.04] text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

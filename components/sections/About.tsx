@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin, GraduationCap, Code2, Cpu, ArrowUpRight } from "lucide-react";
 import { personalInfo, education } from "@/lib/data";
