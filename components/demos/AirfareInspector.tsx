@@ -143,29 +143,29 @@ export function AirfareInspector() {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {/* Top Banner: SIH Winner Honor & Aviation Problem Statement */}
+      {/* Top Banner: Aviation Analytics Problem Statement */}
       <div className="mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-1">
         <div className="flex items-center gap-2">
-          <span className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <Award className="w-4 h-4" />
+          <span className="p-1.5 rounded-lg bg-sky-500/10 text-sky-400 border border-sky-500/20">
+            <Plane className="w-4 h-4" />
           </span>
           <div>
             <div className="text-xs font-mono font-bold text-white flex items-center gap-1.5">
-              <span>SMART INDIA HACKATHON WINNER</span>
-              <span className="px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[10px]">
-                SIH WINNER
+              <span>UDAAN METRICS</span>
+              <span className="px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 text-[10px] font-mono">
+                DATA PIPELINE
               </span>
             </div>
             <div className="text-[11px] text-zinc-400">
-              Udaan-Metrics • Real-Time Airfare Price Index & Anomaly Detection Pipeline
+              Real-Time Airfare Price Index & Anomaly Detection Pipeline
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-sky-500/10 text-sky-400 border border-sky-500/20 flex items-center gap-1">
-            <Building2 className="w-3.5 h-3.5" />
-            <span>Ministry of Civil Aviation / MoSPI</span>
+          <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-zinc-900 text-zinc-300 border border-zinc-800 flex items-center gap-1">
+            <Building2 className="w-3.5 h-3.5 text-zinc-400" />
+            <span>Aviation Analytics</span>
           </span>
         </div>
       </div>

@@ -27,10 +27,10 @@ export function Education() {
 
   const honorsAndActivities = [
     {
-      title: "Smart India Hackathon (SIH 2024)",
-      detail: "Finalist & Winner: Engineered Udaan Metrics real-time airfare CPI inflation tracking and automated scraping engine for national price indices.",
-      icon: Trophy,
-      badge: "National Finalist / Winner",
+      title: "Full-Stack & Distributed Systems Architecture",
+      detail: "Engineered scalable web applications, real-time data pipelines, and resilient microservices across cloud and edge platforms.",
+      icon: Award,
+      badge: "Systems & Cloud",
     },
     {
       title: "Competitive Programming & Problem Solving",

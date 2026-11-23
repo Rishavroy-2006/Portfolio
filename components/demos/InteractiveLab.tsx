@@ -78,13 +78,13 @@ export function InteractiveLab() {
     {
       key: "airfare",
       label: "Airfare Anomaly Inspector",
-      shortLabel: "Udaan SIH",
+      shortLabel: "Udaan Airfare",
       project: "Udaan-Metrics",
       icon: Plane,
-      tagline: "Smart India Hackathon winner: real-time airfare index eliminating predatory surge pricing via IQR anomaly filtering.",
+      tagline: "Real-time airfare index tracking domestic corridors and filtering predatory surge pricing via statistical IQR anomaly detection.",
       githubUrl: "https://github.com/Rishavroy-2006/Udaan-Metrics",
       liveUrl: "https://udaan-metrics.vercel.app",
-      tech: ["FastAPI", "IQR Anomaly Filter", "Prophet ML", "MoSPI Index", "React / Vite"],
+      tech: ["FastAPI", "IQR Anomaly Filter", "Prophet ML", "Price Index Engine", "React / Vite"],
     },
   ];
 

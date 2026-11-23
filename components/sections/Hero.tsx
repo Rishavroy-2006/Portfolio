@@ -7,7 +7,6 @@ import {
   Copy,
   Check,
   Server,
-  Trophy,
   Clock,
   Sparkles,
   Code2,
@@ -131,16 +130,16 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Smart India Hackathon Badge */}
+            {/* Core Engineering Focus Badge */}
             <div className="flex items-center justify-between sm:justify-start gap-2.5 px-3.5 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05]">
               <div className="flex items-center gap-2">
-                <Trophy className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <Code2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                 <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
-                  SIH 2024
+                  Core Focus
                 </span>
               </div>
-              <span className="text-xs font-mono font-semibold text-amber-300 ml-auto">
-                Winner / Finalist
+              <span className="text-xs font-mono font-semibold text-sky-300 ml-auto">
+                Full-Stack & Systems
               </span>
             </div>
           </div>

@@ -132,7 +132,7 @@ This portfolio adheres strictly to `/impeccable` craft-floor principles to guara
 - **Live Telemetry Strip**:
   1. **Local Time**: Live digital clock showing Kolkata Time (`UTC +5:30`) updating every second.
   2. **PhoneCloud Server Status**: Operational status pill (`184d uptime • AC Bypass • 37°C`).
-  3. **Hackathon Credential**: Smart India Hackathon 2024 Finalist badge.
+  3. **Core Engineering**: Full-Stack & Systems focus badge.
 - **Action Bay**:
   - Primary: `"Launch Interactive Lab"` (smooth scrolls to `#interactive-lab`).
   - Secondary: `"Explore Projects"` (scrolls to `#projects`).
@@ -150,7 +150,7 @@ This portfolio adheres strictly to `/impeccable` craft-floor principles to guara
 - **Category Filter Tabs**: `All`, `AI & Machine Learning`, `Systems & Edge`, `Personal Safety & Mobile`, `Web Platform`, `Civic Tech`.
 - **Flagship Spotlight (Top 4)**:
   - `ClipIt Studio`: Local GPU acceleration, 24/7 Live Stream Sentinel, audio Z-score detection.
-  - `Udaan Metrics`: SIH Finalist, real-time airfare CPI index, self-healing scrapers.
+  - `Udaan Metrics`: Real-time airfare price index, self-healing scrapers, statistical anomaly detection.
   - `Stealth Calculator`: Dual-identity mobile safety app, 0-latency emergency dispatch.
   - `PhoneCloud`: Low-power private cloud running on Android hardware.
 - **Curated Bento Grid (Remaining 6)**:
@@ -175,7 +175,7 @@ This portfolio adheres strictly to `/impeccable` craft-floor principles to guara
 - **Degree**: B.Tech in Computer Science & Engineering (Artificial Intelligence & Machine Learning), 2024–2028.
 - **Performance**: CGPA 8.2 / 10.0 (High Distinction).
 - **Core Coursework**: Data Structures & Algorithms, Operating Systems, Computer Networks, Neural Networks & Deep Learning, Database Management Systems.
-- **Beyond Code**: Smart India Hackathon participation, hardware repurposing experiments, competitive coding.
+- **Beyond Code**: Open-source systems engineering, hardware repurposing experiments, competitive coding.
 
 ### 5.7 Contact Bay & Direct Channels (`Contact.tsx`)
 - **Terminal Design**: Dual-column engineering card.
