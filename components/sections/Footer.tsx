@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Heart, ArrowUp } from "lucide-react";
 import { personalInfo } from "@/lib/data";
+import { ArrowUp } from "lucide-react";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -10,41 +9,30 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative py-8 border-t border-border">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Copyright */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-sm text-muted-foreground flex items-center gap-1"
-          >
-            Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by{" "}
-            <span className="text-gradient font-medium">{personalInfo.name}</span>
-          </motion.p>
+    <footer className="border-t border-white/[0.08] py-10 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
+        <div>
+          <p className="font-medium text-foreground">
+            {personalInfo.name} • {personalInfo.tagline}
+          </p>
+          <p className="text-[11px] mt-0.5 opacity-80">
+            Deployed on Cloudflare Workers with OpenNext & Next.js.
+          </p>
+        </div>
 
-          {/* Year */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-sm text-muted-foreground"
-          >
-            &copy; {new Date().getFullYear()} All rights reserved.
-          </motion.p>
-
-          {/* Scroll to top */}
-          <motion.button
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+        <div className="flex items-center gap-4">
+          <p className="font-mono text-[11px]">
+            &copy; {new Date().getFullYear()} Rishav Roy
+          </p>
+          <button
             onClick={scrollToTop}
-            className="p-2 glass rounded-lg hover:bg-white/10 transition-colors group"
-            aria-label="Scroll to top"
+            type="button"
+            className="p-2 rounded-lg surface-card text-muted-foreground hover:text-white transition-colors"
+            aria-label="Back to top"
+            title="Scroll to top of page"
           >
-            <ArrowUp className="w-4 h-4 group-hover:text-primary transition-colors" />
-          </motion.button>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>

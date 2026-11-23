@@ -1,159 +1,123 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { MapPin, Mail, GraduationCap, Sparkles } from "lucide-react";
-import { personalInfo, education } from "@/lib/data";
 import Image from "next/image";
+import { MapPin, GraduationCap, Code2, Cpu, ArrowUpRight } from "lucide-react";
+import { personalInfo, education } from "@/lib/data";
 
 export function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const currentDegree = education[0];
 
   return (
-    <section
-      id="about"
-      ref={ref}
-      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
-    >
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
+    <section id="about" className="py-20 sm:py-28 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Section Heading - clean, no eyebrows or gradient underlines */}
+        <div className="mb-14 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+            About
+          </h2>
+          <p className="text-muted-foreground text-sm sm:text-base max-w-xl">
+            A look into my background, technical interests, and academic foundation.
+          </p>
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-10 sm:mb-16">
-            <p className="text-primary text-sm uppercase tracking-widest mb-3">
-              Get to know me
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              About <span className="text-gradient">Me</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-            {/* Left Column - Photo/Visual */}
-            <motion.div variants={itemVariants} className="relative">
-              <div className="relative aspect-square max-w-xs sm:max-w-md mx-auto">
-                {/* Animated border */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary animate-spin-slow opacity-30" />
-                <div className="absolute inset-1 rounded-2xl bg-background" />
-                
-                {/* Profile image with glass overlay */}
-                <div className="absolute inset-3 sm:inset-4 rounded-xl overflow-hidden">
-                  <Image
-                    src="/images/profile.jpg"
-                    alt="Rishav Roy"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  {/* Subtle glass overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
-                </div>
-
-                {/* Floating elements — hidden on very small screens to avoid clipping */}
-                <motion.div
-                  className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 p-2 sm:p-3 glass rounded-lg"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <GraduationCap className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
-                </motion.div>
-                <motion.div
-                  className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 p-2 sm:p-3 glass rounded-lg"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 3.5, repeat: Infinity }}
-                >
-                  <MapPin className="w-4 h-4 sm:w-6 sm:h-6 text-accent" />
-                </motion.div>
+        <div className="grid lg:grid-cols-12 gap-10 sm:gap-12 items-start">
+          {/* Profile Photo Column */}
+          <div className="lg:col-span-5">
+            <div className="relative aspect-[4/5] max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-2xl">
+              <Image
+                src="/images/profile.jpg"
+                alt="Rishav Roy"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl surface-card backdrop-blur-md border border-white/10">
+                <p className="text-xs font-mono text-primary uppercase tracking-wider mb-0.5">Status</p>
+                <p className="text-xs font-medium text-foreground">
+                  Undergraduate • Narula Institute of Technology
+                </p>
               </div>
-            </motion.div>
-
-            {/* Right Column - Info */}
-            <motion.div variants={itemVariants} className="space-y-6">
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {personalInfo.bio}
-              </p>
-
-              {/* Info cards */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="glass p-4 rounded-xl">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-primary/20 rounded-lg">
-                      <MapPin className="w-4 h-4 text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground">Location</span>
-                  </div>
-                  <p className="font-medium">{personalInfo.location}</p>
-                </div>
-
-                <div className="glass p-4 rounded-xl">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-accent/20 rounded-lg">
-                      <Mail className="w-4 h-4 text-accent" />
-                    </div>
-                    <span className="text-sm text-muted-foreground">Email</span>
-                  </div>
-                  <p className="font-medium text-xs sm:text-sm break-all">{personalInfo.email}</p>
-                </div>
-
-                <div className="glass p-4 rounded-xl sm:col-span-2">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 bg-primary/20 rounded-lg">
-                      <GraduationCap className="w-4 h-4 text-primary" />
-                    </div>
-                    <span className="text-sm text-muted-foreground">Education</span>
-                  </div>
-                  <p className="font-medium">{education[0].degree}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {education[0].specialization}
-                  </p>
-                  <p className="text-xs text-primary mt-1">
-                    {education[0].status}
-                  </p>
-                </div>
-              </div>
-
-              {/* CTA */}
-              <div className="flex gap-4 pt-4">
-                <a
-                  href="#contact"
-                  className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all duration-300"
-                >
-                  Get in Touch
-                </a>
-                <a
-                  href="#projects"
-                  className="px-6 py-3 glass rounded-lg font-medium hover:bg-white/10 transition-all duration-300"
-                >
-                  View Work
-                </a>
-              </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+
+          {/* Bio & Details Column */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
+              <p>
+                I am a second-year B.Tech student in Computer Science & Engineering with a specialization in Artificial Intelligence & Machine Learning at Narula Institute of Technology, Kolkata.
+              </p>
+              <p>
+                My focus spans foundational software development and applied machine learning. I enjoy projects that bridge the physical and virtual—such as repurposing an old Android smartphone into <strong className="text-white font-medium">PhoneCloud</strong>, a 24/7 private network cloud server featuring real-time WebSockets and on-device AI document chat.
+              </p>
+              <p>
+                I am continuously refining my core computer science knowledge in data structures and algorithms while exploring production-grade modern web architectures, edge runtimes, and Cloudflare Workers.
+              </p>
+            </div>
+
+            {/* Quick Fact Cards Grid */}
+            <div className="grid sm:grid-cols-2 gap-3.5 pt-2">
+              <div className="surface-card p-4 rounded-xl">
+                <div className="flex items-center gap-2.5 mb-1.5 text-primary">
+                  <GraduationCap className="w-4 h-4" />
+                  <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Education</span>
+                </div>
+                <p className="text-sm font-semibold text-white">{currentDegree.degree}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{currentDegree.institution}</p>
+                <p className="text-xs text-emerald-400 mt-1 font-mono">CGPA: {currentDegree.cgpa}</p>
+              </div>
+
+              <div className="surface-card p-4 rounded-xl">
+                <div className="flex items-center gap-2.5 mb-1.5 text-primary">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Location</span>
+                </div>
+                <p className="text-sm font-semibold text-white">{personalInfo.location}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">West Bengal, India</p>
+                <p className="text-xs text-muted-foreground mt-1 font-mono">IST (UTC +5:30)</p>
+              </div>
+
+              <div className="surface-card p-4 rounded-xl">
+                <div className="flex items-center gap-2.5 mb-1.5 text-primary">
+                  <Cpu className="w-4 h-4" />
+                  <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Focus</span>
+                </div>
+                <p className="text-sm font-semibold text-white">AI & Machine Learning</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Algorithms, Data Analysis, Systems</p>
+              </div>
+
+              <div className="surface-card p-4 rounded-xl">
+                <div className="flex items-center gap-2.5 mb-1.5 text-primary">
+                  <Code2 className="w-4 h-4" />
+                  <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Stack</span>
+                </div>
+                <p className="text-sm font-semibold text-white">Python, C/C++, Web</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Next.js, Flask, Tailwind CSS</p>
+              </div>
+            </div>
+
+            {/* In-page action */}
+            <div className="pt-2 flex flex-wrap gap-3">
+              <a
+                href="#education"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+              >
+                <span>View academic coursework</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <span className="text-white/20">•</span>
+              <a
+                href="#skills"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+              >
+                <span>Browse technical skills</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

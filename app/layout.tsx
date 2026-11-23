@@ -1,34 +1,34 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
-  title: 'Rishav Roy | Developer Portfolio',
-  description: 'Aspiring Developer & AI/ML Enthusiast. B.Tech CSE student specializing in Artificial Intelligence and Machine Learning.',
-  generator: 'v0.app',
-  keywords: ['developer', 'portfolio', 'AI', 'ML', 'web development', 'Rishav Roy'],
+  title: 'Rishav Roy — Computer Science & AI/ML',
+  description: 'Portfolio of Rishav Roy, 2nd-year B.Tech CSE student specializing in Artificial Intelligence and Machine Learning at Narula Institute of Technology. Exploring systems, edge servers, and software engineering.',
+  keywords: ['Rishav Roy', 'Developer', 'Portfolio', 'AI/ML', 'Computer Science', 'Next.js', 'Kolkata'],
   authors: [{ name: 'Rishav Roy' }],
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
 }
 
 export default function RootLayout({
@@ -37,7 +37,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${geist.variable} ${geistMono.variable}`}>
+      <head>
+        {/* iOS Safari Zoom-on-Refresh prevention */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, shrink-to-fit=no" />
+      </head>
       <body className="font-sans antialiased bg-background text-foreground">
         {children}
         <Analytics />

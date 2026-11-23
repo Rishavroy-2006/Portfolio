@@ -1,147 +1,103 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { skills, currentlyLearning } from "@/lib/data";
-import { Code, Globe, Wrench, Brain, BookOpen, TrendingUp } from "lucide-react";
+import { skillCategories, activeFocusAreas } from "@/lib/data";
+import { Terminal, Globe, Cpu, Wrench, Sparkles, ArrowRight } from "lucide-react";
 
-const categoryIcons: Record<string, typeof Code> = {
-  language: Code,
+const categoryIcons = {
+  languages: Terminal,
   web: Globe,
-  tool: Wrench,
-  specialty: Brain,
-};
-
-const categoryColors: Record<string, string> = {
-  language: "from-blue-500 to-cyan-400",
-  web: "from-emerald-500 to-teal-400",
-  tool: "from-amber-500 to-orange-400",
-  specialty: "from-purple-500 to-pink-400",
+  aiml: Cpu,
+  tools: Wrench,
 };
 
 export function Skills() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: { opacity: 1, y: 0, scale: 1 },
-  };
-
   return (
-    <section
-      id="skills"
-      ref={ref}
-      className="relative py-16 sm:py-24 md:py-32 overflow-hidden"
-    >
-      {/* Background elements */}
-      <div className="absolute top-1/4 right-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow pointer-events-none" />
+    <section id="skills" className="py-20 sm:py-28 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Section Heading - clean, no eyebrows or gradient underlines */}
+        <div className="mb-14 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-3">
+            Skills & Technologies
+          </h2>
+          <p className="text-muted-foreground text-sm sm:text-base max-w-xl">
+            Practical competencies grouped by domain, with context on where and how I apply them.
+          </p>
+        </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <p className="text-primary text-sm uppercase tracking-widest mb-3">
-              Technical Expertise
-            </p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              My <span className="text-gradient">Skills</span>
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
-          </motion.div>
+        {/* 4 Categorized Domain Grids */}
+        <div className="grid md:grid-cols-2 gap-6 mb-14">
+          {skillCategories.map((category) => {
+            const IconComponent = categoryIcons[category.id as keyof typeof categoryIcons] || Terminal;
+            return (
+              <div
+                key={category.id}
+                className="surface-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-white/[0.05] border border-white/10 text-primary">
+                      <IconComponent className="w-4 h-4" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white">
+                      {category.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs text-muted-foreground mb-5">
+                    {category.description}
+                  </p>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mb-16">
-            {skills.map((skill, index) => {
-              const Icon = categoryIcons[skill.category] || Code;
-              const gradient = categoryColors[skill.category] || "from-primary to-accent";
-              
-              return (
-                <motion.div
-                  key={skill.name}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  className="group glass p-4 sm:p-5 rounded-xl cursor-default relative overflow-hidden"
-                >
-                  {/* Hover glow effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`p-2 rounded-lg bg-gradient-to-br ${gradient}`}>
-                        <Icon className="w-4 h-4 text-white" />
+                  {/* Skills tags with context */}
+                  <div className="grid sm:grid-cols-2 gap-2.5">
+                    {category.skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="p-2.5 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-white/20 transition-colors"
+                      >
+                        <p className="text-xs font-medium text-white font-mono">
+                          {skill.name}
+                        </p>
+                        {skill.context && (
+                          <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                            {skill.context}
+                          </p>
+                        )}
                       </div>
-                      <span className="text-sm font-mono text-muted-foreground">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    
-                    <h3 className="font-semibold mb-3">{skill.name}</h3>
-                    
-                    {/* Progress bar */}
-                    <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: 0.2 + index * 0.05 }}
-                        className={`h-full rounded-full bg-gradient-to-r ${gradient}`}
-                      />
-                    </div>
+                    ))}
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Active Focus Areas (Replaces fake percentage progress bars) */}
+        <div className="surface-elevated rounded-2xl p-6 sm:p-8">
+          <div className="flex items-center gap-2.5 mb-2 text-primary">
+            <Sparkles className="w-4 h-4" />
+            <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+              Active Focus & Ongoing Exploration
+            </h3>
           </div>
+          <p className="text-xs text-muted-foreground mb-6">
+            Key areas I am currently dedicating study hours and experimental projects to.
+          </p>
 
-          {/* Currently Learning Section */}
-          <motion.div variants={itemVariants}>
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <BookOpen className="w-5 h-5 text-accent" />
-              <h3 className="text-xl font-semibold">Currently Learning</h3>
-              <TrendingUp className="w-5 h-5 text-primary" />
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-              {currentlyLearning.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  variants={itemVariants}
-                  className="glass p-4 rounded-xl"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-medium text-sm">{item.name}</span>
-                    <span className="text-xs text-muted-foreground font-mono">
-                      {item.progress}%
-                    </span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={isInView ? { width: `${item.progress}%` } : { width: 0 }}
-                      transition={{ duration: 1.2, delay: 0.5 + index * 0.1 }}
-                      className="h-full rounded-full bg-gradient-to-r from-accent to-primary"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {activeFocusAreas.map((area, idx) => (
+              <div
+                key={area.title}
+                className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono text-primary font-semibold">0{idx + 1}</span>
+                  <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-white/[0.05] text-muted-foreground">Active</span>
+                </div>
+                <h4 className="text-sm font-semibold text-white mb-1.5">{area.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{area.focus}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

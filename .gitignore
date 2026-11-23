@@ -7,6 +7,10 @@
 /.next/
 /out/
 
+# open-next & cloudflare
+/.open-next/
+/.wrangler/
+
 # production
 /build
 
@@ -25,3 +29,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# OS
+.DS_Store
+Thumbs.db
